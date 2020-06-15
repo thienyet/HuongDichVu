@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html layout:decorator="template" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}">
+    <script
+            th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+    <script
+            th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/fontawesome/css/all.css}">
+    <link rel="stylesheet" th:href="@{/css/welcome.css}">
+
+
+    <title>List Blog</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="col-md-9 content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h5>
+                    <a th:href="@{'/admin/downloadExcell'}"><i class="fas fa-download"></i>File excell</a>
+                </h5>
+                <h3>List Blog</h3>
+            </div>
+        </div>
+
+        <div class="row pad-wel text-center">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list">
+                <table class="table table-hover text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Expand</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="t : ${list}">
+                        <td class="text-center" th:text="${tStat.count} "></td>
+                        <td class="text-center" th:text="${t.getTitle()}"></td>
+                        <td class="text-center"><a
+                                th:href="@{'/admin/deleteTTNCN?id='+ ${t.id}}">Delete</a>|| <a
+                                th:href="@{'/admin/editTTNCN?id='+ ${t.id}}">Edit</a></td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer">
+                    Design by team <a href="">LapTrinhWeb</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
